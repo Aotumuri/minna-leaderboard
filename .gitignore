@@ -1,0 +1,15 @@
+.env
+node_modules/
+
+# ignore data files
+data/
+cache/
+
+# ignore tree structure and memo files
+# TODO: 最後に消す
+tree.txt
+**/Memo.txt
+
+# ignore journals (for qiita)
+# TODO: 最後に消す
+nikki/

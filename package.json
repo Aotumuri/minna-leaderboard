@@ -1,0 +1,13 @@
+{
+  "name": "minna-leaderboard",
+  "scripts": {
+    "init": "node init/script.js"
+  },
+  "type": "module",
+  "author": "aotumuri",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^12.5.0",
+    "dotenv": "^17.2.3"
+  }
+}
