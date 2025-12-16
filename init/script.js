@@ -66,13 +66,13 @@ var dummy_config = {
           name: "moderator",
           password: "root",
           permission: ["add", "remove"],
-        }
+        },
       ],
     },
     {
-        port: 3001,
-        type: "api"
-    }
+      port: 3001,
+      type: "api",
+    },
   ],
   score: {
     ktv1: {

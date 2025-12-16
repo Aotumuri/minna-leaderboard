@@ -13,7 +13,7 @@ export function startServer() {
   stopServers();
 
   const server_config = JSON.parse(
-    fs.readFileSync(SERVER_CONFIG_PATH, "utf-8")
+    fs.readFileSync(SERVER_CONFIG_PATH, "utf-8"),
   ).server;
 
   for (const port_config of server_config) {
@@ -29,7 +29,7 @@ export function startServer() {
 
     server.listen(port_config.port, () => {
       console.log(
-        `${port_config.type} server at http://localhost:${port_config.port}`
+        `${port_config.type} server at http://localhost:${port_config.port}`,
       );
     });
 
@@ -62,15 +62,17 @@ function apiServer(req, res, config) {
     return;
   }
 
-  responseApi(res, 404, "json", {error: "Not Found"});
+  responseApi(res, 404, "json", { error: "Not Found" });
 }
 
 function responseApi(res, status, type, payload) {
   if (type === "json") {
-    res.writeHead(status, {"Content-Type": "application/json; charset=UTF-8"});
+    res.writeHead(status, {
+      "Content-Type": "application/json; charset=UTF-8",
+    });
     res.end(JSON.stringify(payload));
   } else if (type === "text") {
-    res.writeHead(status, {"Content-Type": "text/plain; charset=UTF-8"});
+    res.writeHead(status, { "Content-Type": "text/plain; charset=UTF-8" });
     res.end(payload);
   } else {
     res.writeHead(500);
