@@ -1,8 +1,8 @@
 {
   "name": "minna-leaderboard",
   "scripts": {
-    "init": "node init/script.js",
-    "restart": "node init/restart.js",
+    "init": "node control/init.js",
+    "restart": "node control/restart.js",
     "format": "prettier . --write"
   },
   "type": "module",
