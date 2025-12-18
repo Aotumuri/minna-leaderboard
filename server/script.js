@@ -28,7 +28,7 @@ export function startServer() {
     // TODO: type によって分岐するようにする。
     const server = http.createServer((req, res) => {
       if (port_config.type === "api") {
-        apiServer(req, res, port_config);
+        apiServer(req, res, server_config);
       } else if (port_config.type === "admin") {
         adminServer(req, res, port_config, adminEnv);
       } else {

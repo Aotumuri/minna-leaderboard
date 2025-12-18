@@ -67,6 +67,11 @@ var dummy_config = {
           password: "root",
           permission: ["add", "remove"],
         },
+        {
+          name: "debugger",
+          password: "root",
+          permission: ["debug", "reset", "session"],
+        },
       ],
     },
     {
