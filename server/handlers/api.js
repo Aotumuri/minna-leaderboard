@@ -37,14 +37,19 @@ export function apiServer(req, res, config) {
   response(res, 404, "json", { error: "Not Found" });
 }
 
-function requirePermission(req, res, config, endpoint){
+function requirePermission(req, res, config, endpoint) {
   const session = getSession(req);
-  if ( session === undefined ) {
+  if (session === undefined) {
     response(res, 401, "json", { error: "Unauthorized" });
     return false;
   }
 
-  if ( config.find((s) => s.type === "admin").sites.find((s) => s.name === session.site).permission.includes(endpoint) === false) {
+  if (
+    config
+      .find((s) => s.type === "admin")
+      .sites.find((s) => s.name === session.site)
+      .permission.includes(endpoint) === false
+  ) {
     response(res, 403, "json", { error: "Forbidden" });
     return false;
   }

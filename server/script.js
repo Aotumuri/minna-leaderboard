@@ -3,16 +3,18 @@ import http from "http";
 import fs from "fs";
 
 import { apiServer } from "./handlers/api.js";
-import { adminServer } from "./handlers/admin.js"
+import { adminServer } from "./handlers/admin.js";
 
 const SERVER_CONFIG_PATH = process.env.SERVER_CONFIG_PATH || "data/config.json";
 
 const adminEnv = {
-    SESSION_TTL: Number(process.env.SESSION_TTL) || 3600,
-    ADMIN_LOGIN_HTML_PATH: process.env.ADMIN_LOGIN_HTML_PATH || "admin/login.html",
-    ADMIN_LOGIN_JS_PATH: process.env.ADMIN_LOGIN_JS_PATH || "admin/login.js",
-    ADMIN_CONTOL_PANEL_HTML_PATH: process.env.ADMIN_CONTOL_PANEL_HTML_PATH || "admin/control-panel.html"
-}
+  SESSION_TTL: Number(process.env.SESSION_TTL) || 3600,
+  ADMIN_LOGIN_HTML_PATH:
+    process.env.ADMIN_LOGIN_HTML_PATH || "admin/login.html",
+  ADMIN_LOGIN_JS_PATH: process.env.ADMIN_LOGIN_JS_PATH || "admin/login.js",
+  ADMIN_CONTOL_PANEL_HTML_PATH:
+    process.env.ADMIN_CONTOL_PANEL_HTML_PATH || "admin/control-panel.html",
+};
 
 // for stopping the servers (maintenance mode)
 let servers = [];
@@ -21,7 +23,7 @@ export function startServer() {
   stopServers();
 
   const server_config = JSON.parse(
-    fs.readFileSync(SERVER_CONFIG_PATH, "utf-8")
+    fs.readFileSync(SERVER_CONFIG_PATH, "utf-8"),
   ).server;
 
   for (const port_config of server_config) {
@@ -39,7 +41,7 @@ export function startServer() {
 
     server.listen(port_config.port, () => {
       console.log(
-        `${port_config.type} server at http://localhost:${port_config.port}`
+        `${port_config.type} server at http://localhost:${port_config.port}`,
       );
     });
 

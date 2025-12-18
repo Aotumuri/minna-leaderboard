@@ -1,4 +1,9 @@
-import { generateSessionId, createSession, getSession, sessions } from "../utils/session.js";
+import {
+  generateSessionId,
+  createSession,
+  getSession,
+  sessions,
+} from "../utils/session.js";
 import { response } from "../utils/response.js";
 import { getBody } from "../utils/request.js";
 
@@ -35,7 +40,11 @@ export async function adminServer(req, res, config, env) {
         return;
       }
 
-      const session = createSession(sessionId, site_config.name, env.SESSION_TTL);
+      const session = createSession(
+        sessionId,
+        site_config.name,
+        env.SESSION_TTL,
+      );
       sessions[sessionId] = session;
 
       const cookie = {
