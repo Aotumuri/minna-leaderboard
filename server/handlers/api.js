@@ -4,24 +4,24 @@ import { sessions } from "../utils/session.js";
 
 export function apiServer(req, res, config) {
   const { url, method } = req;
-  if (url.startsWith("/health") && method === "GET") {
+  if (url === "/health" && method === "GET") {
     response(res, 200, "json", { status: "ok" });
     return;
   }
 
-  if (url.startsWith("/debug")) {
+  if (url === "/debug") {
     response(res, 200, "json", setDecoy());
     return;
   }
 
-  if (url.startsWith("/reset")) {
+  if (url === "/reset") {
     resetLeaderBoard();
     response(res, 200, "json", { status: "ok" });
     return;
   }
 
   // TODO: 管理者用APIが整ったら絶対に消す。
-  if (url.startsWith("/session")) {
+  if (url === "/session") {
     response(res, 200, "json", { sessions: sessions });
     return;
   }
