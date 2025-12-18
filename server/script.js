@@ -216,7 +216,7 @@ function getSession(req) {
   if (sessionCookie === undefined) return;
   const sessionId = sessionCookie.split("=")[1];
   const session = sessions[sessionId];
-  if (!session) return;
+  if (session === undefined) return;
   if (session.expiresAt <= Date.now()) {
     delete sessions[sessionId];
     return;
