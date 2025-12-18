@@ -39,7 +39,7 @@ export async function adminServer(req, res, config, env) {
       sessions[sessionId] = session;
 
       const cookie = {
-        "Set-Cookie": `sessionId=${sessionId}; HttpOnly; Max-Age=${env.SESSION_TTL}`,
+        "Set-Cookie": `sessionId=${sessionId}; HttpOnly; Max-Age=${env.SESSION_TTL}; Path=/; SameSite=Lax`,
       };
 
       response(res, 200, "json", { status: "ok" }, cookie);
